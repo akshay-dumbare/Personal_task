@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  ts:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./src:/app/src
+      - ./webpack.config.ts:/app/webpack.config.ts
+      - ./tsconfig.json:/app/tsconfig.json
+      - ./dist:/app/dist
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    restart: always
+  mongo:
+    image: mongo:4.2.1
+    ports: 
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    container_name: mongo
+    hostname: mongo
+    restart: always
+    
+volumes:
+    mongo-data:
