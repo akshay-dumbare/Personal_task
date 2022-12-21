@@ -1,8 +1,10 @@
 const path = require('path');
 const NodemonPlugin = require('nodemon-webpack-plugin');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
     entry: './src/index.ts',
+    externals: [nodeExternals()],
     output: {
         filename: 'bundle.js',
         path: __dirname + '/dist',
@@ -22,7 +24,7 @@ module.exports = {
             __dirname,
             __dirname + '/src',
             __dirname + '/node_modules'
-            
+
         ],
     },
     plugins: [
