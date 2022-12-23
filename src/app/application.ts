@@ -1,7 +1,7 @@
 import { inject, injectable } from 'inversify';
 import { MongoClient } from '../core/interface/Mongo';
 import PresentationLayer from '../core/interface/PresentationLayer';
-import { TYPES } from '../core/Types';
+import TYPES from '../core/Types';
 
 @injectable()
 export default class Application {

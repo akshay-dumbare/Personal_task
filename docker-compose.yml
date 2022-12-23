@@ -3,7 +3,9 @@ version: "3"
 services:
   ts:
     build:
-      context: .
+      context: . 
+    environment:
+      MONGO_URI: mongodb://mongo:27017/   
     ports:
       - 3000:3000
     volumes:
