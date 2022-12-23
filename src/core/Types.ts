@@ -1,6 +1,6 @@
-export const TYPES = {
+export default {
+    Application: Symbol.for('IApplication'),
     TokenService: Symbol.for('TokenService'),
     MongoClient: Symbol.for('MongoClient'),
-    Application: Symbol.for('IApplication'),
-    PresentationLayer: Symbol.for('PresentationLayer')
+    PresentationLayer: Symbol.for('PresentationLayer'),
 }

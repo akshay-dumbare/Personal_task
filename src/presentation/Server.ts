@@ -3,29 +3,30 @@ import { injectable } from 'inversify';
 import PresentationLayer from '../core/interface/PresentationLayer';
 import lookupRoutes from '../presentation/Lookup/Routes';
  
-const server = Hapi.server({
-    port: 3000,
-    host: 'localhost'
-});
-
 @injectable()
 export default class Server implements PresentationLayer {
-   
+    private readonly _server: Hapi.Server;
+
+    constructor() {
+        this._server = new Hapi.Server({
+            port: 3000,
+            host: '0.0.0.0',
+        });
+    }
+
     public async mount(): Promise<void> {
-        server.route(lookupRoutes);
+        this._server.route(lookupRoutes);
     }
 
     public async start(): Promise<void> {
         await this.mount();
-        // console.log("------------------");
-        return server.start();
+        return this._server.start().then(() =>{
+            console.log(`Server running on ${this._server.info.uri}`)
+        });
     }
-
 
     public async stop(): Promise<void> {
-        await server.stop({ timeout: 1000 });
+        await this._server.stop({ timeout: 1000 });
     }
-    
 
 }
-

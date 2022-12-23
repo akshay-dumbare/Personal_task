@@ -11,8 +11,9 @@ COPY package.json package-lock.json ./
 
 RUN npm install
 
-COPY tsconfig.json webpack.config.ts ./
+COPY tsconfig.json webpack.config.js ./
 
+COPY index.ts ./
 
 COPY src src
 

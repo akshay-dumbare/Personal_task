@@ -1,6 +1,6 @@
 import 'reflect-metadata';
 import { Container } from 'inversify';
-import { TYPES } from '../src/core/Types';
+import TYPES from '../src/core/Types';
 import ITokenService from '../src/core/interface/TokenService/TokenService';
 import { VerifoneTokenService } from '../src/infra/TokenService/VerifoneTokenService';
 import { MongoClient } from '../src/core/interface/Mongo';
